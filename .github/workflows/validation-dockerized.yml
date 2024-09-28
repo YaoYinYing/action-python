@@ -11,6 +11,10 @@ on:
       python-version: 
         type: string
         default: 3.11.3
+
+      docker-image:
+        type: string
+        default: ubuntu
       
     secrets:
       AZURE_CREDENTIALS:
@@ -23,6 +27,9 @@ on:
 jobs:
   validation:
     runs-on: ubuntu-latest
+    container:
+        image: ${{ inputs.docker-image }}
+    
     strategy:
       matrix:
         tools: ['black', 'bandit', 'pylint', 'flake8']
@@ -31,6 +38,7 @@ jobs:
             args: -m not integration and not gpu
           - tools: pytest
             args: -m integration
+      
     steps:
       - uses: actions/checkout@v4
       - uses: Azure/login@v1.5.1
