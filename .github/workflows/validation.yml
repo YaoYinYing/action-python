@@ -33,11 +33,11 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: ${{ matrix.tools }}
-        uses: YaoYinYing/action-python
+        uses: YaoYinYing/action-python@v7.3.1-post-2
         with:
           ${{ matrix.tools }}: true
           args: ${{ matrix.args }}
           workdir: ${{ inputs.workdir }}
           testdir: ${{ inputs.testdir }}
           python_version: ${{ inputs.python-version }}
-          CODECOV_TOKEN: ${{ inputs.CODECOV_TOKEN }}
+          codecov_token: ${{ inputs.CODECOV_TOKEN }}
