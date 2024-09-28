@@ -11,10 +11,6 @@ on:
       python-version: 
         type: string
         default: 3.11.3
-
-      codecov_token:
-        type: string
-        default: ''
       
     secrets:
       AZURE_CREDENTIALS:
@@ -42,12 +38,11 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: ${{ matrix.tools }}
-        uses: YaoYinYing/action-python@v7.3.1-post-5
+        uses: YaoYinYing/action-python@v7.3.1-post-6
         with:
           ${{ matrix.tools }}: true
           args: ${{ matrix.args }}
           workdir: ${{ inputs.workdir }}
           testdir: ${{ inputs.testdir }}
           python_version: ${{ inputs.python-version }}
-        secrets:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
