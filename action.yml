@@ -190,7 +190,7 @@ runs:
       with:
         flags: ${{ inputs.flags }}
       env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        CODECOV_TOKEN: ${{ inputs.CODECOV_TOKEN }}
 
     - if: ${{ inputs.pypi_publish == 'true' }}
       shell: bash

@@ -40,5 +40,4 @@ jobs:
           workdir: ${{ inputs.workdir }}
           testdir: ${{ inputs.testdir }}
           python_version: ${{ inputs.python-version }}
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          CODECOV_TOKEN: ${{ inputs.CODECOV_TOKEN }}
