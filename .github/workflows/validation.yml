@@ -20,7 +20,9 @@ on:
       AZURE_CREDENTIALS:
         required: false
 
-      
+      CODECOV_TOKEN:
+        required: false
+
 
 jobs:
   validation:
@@ -40,11 +42,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: ${{ matrix.tools }}
-        uses: YaoYinYing/action-python@v7.3.1-post-4
+        uses: YaoYinYing/action-python@v7.3.1-post-5
         with:
           ${{ matrix.tools }}: true
           args: ${{ matrix.args }}
           workdir: ${{ inputs.workdir }}
           testdir: ${{ inputs.testdir }}
           python_version: ${{ inputs.python-version }}
-          codecov_token: ${{ inputs.codecov_token }}
+        secrets:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

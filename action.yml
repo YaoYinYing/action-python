@@ -91,10 +91,9 @@ inputs:
     description: 'Flags for code coverage'
     default: 'unittests'
 
-  codecov_token:
-    description: 'CodeCov Token. Default is empty.'
-    default: ''
-  
+secrets:
+  CODECOV_TOKEN:
+    required: false
 
   ### Flags for reviewdog ###
   level:
@@ -195,7 +194,7 @@ runs:
       with:
         flags: ${{ inputs.flags }}
       env:
-        CODECOV_TOKEN: ${{ inputs.codecov_token }}
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - if: ${{ inputs.pypi_publish == 'true' }}
       shell: bash
