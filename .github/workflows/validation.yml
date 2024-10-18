@@ -38,7 +38,7 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: ${{ matrix.tools }}
-        uses: YaoYinYing/action-python@v7.3.1-post-7
+        uses: YaoYinYing/action-python@v7.3.1-post-6
         with:
           ${{ matrix.tools }}: true
           args: ${{ matrix.args }}
