@@ -32,7 +32,7 @@ jobs:
           - tools: pytest
             args: -m integration
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.0
       - uses: Azure/login@v1.5.1
         continue-on-error: true
         with:
